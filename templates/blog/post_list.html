@@ -1,9 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %}Posts{% endblock %}
+{% block title %}{% if category %}{{ category.name }}{% else %}Posts{% endif %}{% endblock %}
 
 {% block content %}
-    <h2>Posts</h2>
+    {% if category %}
+        <h2>Categoria: {{ category.name }}</h2>
+        {% if category.description %}<p>{{ category.description }}</p>{% endif %}
+        <p><a href="{% url 'category_list' %}">← Todas as categorias</a></p>
+    {% else %}
+        <h2>Posts</h2>
+    {% endif %}
+
     <ul>
         {% for post in posts %}
             <li>
@@ -11,7 +18,7 @@
                 <small>({{ post.posted_at|date:"d/m/Y H:i" }})</small>
             </li>
         {% empty %}
-            <li>Nenhum post ainda.</li>
+            <li>Nenhum post{% if category %} nesta categoria{% endif %}.</li>
         {% endfor %}
     </ul>
 {% endblock %}

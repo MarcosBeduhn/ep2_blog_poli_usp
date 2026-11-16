@@ -1,18 +1,41 @@
 {% extends 'base.html' %}
 
-{% block title %}{% if post %}Editar{% else %}Novo{% endif %} post{% endblock %}
+{% block title %}{% if object %}Editar{% else %}Novo{% endif %} post{% endblock %}
 
 {% block content %}
-    <h2>{% if post %}Editar post{% else %}Novo post{% endif %}</h2>
+    <h2>{% if object %}Editar post{% else %}Novo post{% endif %}</h2>
 
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+
+        <p>
+            {{ form.title.label_tag }}<br>
+            {{ form.title }}
+            {{ form.title.errors }}
+        </p>
+
+        <p>
+            {{ form.content.label_tag }}<br>
+            {{ form.content }}
+            {{ form.content.errors }}
+        </p>
+
+        <p>Categorias:</p>
+        <div class="categorias">
+            {% for checkbox in form.categories %}
+                <label>{{ checkbox.tag }} {{ checkbox.choice_label }}</label>
+            {% empty %}
+                <small>Nenhuma categoria cadastrada ainda.</small>
+            {% endfor %}
+        </div>
+
         <div class="botoes1">
             <button type="submit">Salvar</button>
-            <button type="submit"><a href="{% url 'post_list' %}">Cancelar</a></button>
+            {% if object %}
+                <a href="{% url 'post_detail' object.pk %}">Cancelar</a>
+            {% else %}
+                <a href="{% url 'post_list' %}">Cancelar</a>
+            {% endif %}
         </div>
     </form>
-
-    
 {% endblock %}

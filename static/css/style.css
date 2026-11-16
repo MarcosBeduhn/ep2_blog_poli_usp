@@ -195,24 +195,174 @@ button:hover {
 /* ---------- Comentários ---------- */
 .comments {
     margin-top: 30px;
+    padding-top: 10px;
+    border-top: 2px solid #9B8FC4;
+}
+
+.comments-topo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.comments-topo h3 {
+    margin: 0;
+    color: #20283A;
 }
 
 .comment {
     padding: 10px 15px;
     margin-top: 12px;
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.6);
     border-left: 4px solid #9B8FC4;
     border-radius: 8px;
 }
 
 .comment p {
-    margin: 0 0 6px;
+    margin: 0;
     text-indent: 0;
+    text-align: left;
+}
+
+.comment-cabecalho {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 4px !important;
+}
+
+.comment-autor {
+    color: #283A63;
+}
+
+.comment-data {
+    color: #5b6275;
+}
+
+.comment-texto {
+    overflow-wrap: break-word;
+}
+
+.vazio {
+    text-indent: 0;
+    color: #5b6275;
+    font-style: italic;
+}
+
+/* ---------- Categorias no formulário do post ---------- */
+.categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 6px 0 16px;
+}
+
+.categorias label {
+    display: inline-block;
+    margin: 0;
+    padding: 6px 14px;
+    font-weight: bold;
+    color: #F4F1E8;
+    background: #283A63;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    user-select: none;
+}
+
+.categorias label:hover {
+    background: #3d548a;
+}
+
+.categorias input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.categorias label:has(input:checked) {
+    background: #9B8FC4;
+    color: #20283A;
+}
+
+.categorias label:has(input:focus-visible) {
+    outline: 2px solid #20283A;
+    outline-offset: 2px;
+}
+
+/* Espaço entre as categorias e os botões */
+.botoes1 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/* ---------- Página do post ---------- */
+.post-titulo {
+    margin: 5px 0 4px;
+    padding-bottom: 8px;
+    color: #20283A;
+    border-bottom: 2px solid #9B8FC4;
+}
+
+.post-meta {
+    margin: 0 0 10px;
+    text-indent: 0;
+    text-align: left;
+    font-size: 0.85rem;
+    color: #5b6275;
+}
+
+.post-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 15px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 3px 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #F4F1E8;
+    background: #283A63;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.tag:hover {
+    background: #9B8FC4;
+    color: #20283A;
+}
+
+.post-conteudo {
+    line-height: 1.6;
+    overflow-wrap: break-word;
+    margin-bottom: 20px;
+}
+
+/* ---------- Botões ---------- */
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(32, 40, 58, 0.2);
 }
 
 .btn {
     display: inline-block;
-    padding: 8px 14px;
+    padding: 8px 16px;
+    font-size: 0.95rem;
     color: #F4F1E8;
     background: #283A63;
     border-radius: 10px;
@@ -221,9 +371,26 @@ button:hover {
 }
 
 .btn:hover {
+    background: #3d548a;
+}
+
+.btn-claro {
+    color: #20283A;
     background: #9B8FC4;
 }
 
+.btn-claro:hover {
+    background: #b3a9d6;
+}
+
+.btn-perigo {
+    color: #F4F1E8;
+    background: #8c2f39;
+}
+
+.btn-perigo:hover {
+    background: #b3414d;
+}
 /*RESPONSIVIDADE*/
 
 @media (max-width: 620px) {

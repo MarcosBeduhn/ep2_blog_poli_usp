@@ -3,31 +3,43 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-    <h2>{{ post.title }}</h2>
-    <p><small>Postado em {{ post.posted_at|date:"d/m/Y H:i" }}</small></p>
+    <article class="post">
+        <h2 class="post-titulo">{{ post.title }}</h2>
+        <p class="post-meta">Postado em {{ post.posted_at|date:"d/m/Y H:i" }}</p>
 
-    <div>{{ post.content|safe }}</div>
+        <div class="post-categorias">
+            {% for category in post.categories.all %}
+                <a href="{% url 'category_detail' category.pk %}" class="tag">{{ category.name }}</a>
+            {% empty %}
+                <small>Sem categoria</small>
+            {% endfor %}
+        </div>
 
-    <div class="botoes1">
-        <a href="{% url 'post_update' post.pk %}">Editar</a>
-        <a href="{% url 'post_delete' post.pk %}">Remover</a>
-        <a href="{% url 'post_list' %}">Voltar</a>
-    </div>
+        <div class="post-conteudo">{{ post.content|safe }}</div>
+
+        <div class="acoes">
+            <a href="{% url 'post_update' post.pk %}" class="btn btn-claro">Editar</a>
+            <a href="{% url 'post_delete' post.pk %}" class="btn btn-perigo">Remover</a>
+            <a href="{% url 'post_list' %}" class="btn btn-claro">Voltar</a>
+        </div>
+    </article>
 
     <section class="comments">
-        <h3>Comentários ({{ post.comments.count }})</h3>
-        <a href="{% url 'comment_create' post.pk %}" class="btn">Comentar</a>
+        <div class="comments-topo">
+            <h3>Comentários ({{ post.comments.count }})</h3>
+            <a href="{% url 'comment_create' post.pk %}" class="btn">Comentar</a>
+        </div>
 
         {% for comment in post.comments.all %}
             <div class="comment">
-                <p>
-                    <strong>{{ comment.author_name }}</strong>
-                    <small>em {{ comment.posted_at|date:"d/m/Y H:i" }}</small>
+                <p class="comment-cabecalho">
+                    <strong class="comment-autor">{{ comment.author_name }}</strong>
+                    <small class="comment-data">{{ comment.posted_at|date:"d/m/Y H:i" }}</small>
                 </p>
-                <p>{{ comment.text|linebreaksbr }}</p>
+                <p class="comment-texto">{{ comment.text|linebreaksbr }}</p>
             </div>
         {% empty %}
-            <p>Nenhum comentário ainda. Seja o primeiro!</p>
+            <p class="vazio">Nenhum comentário ainda. Seja o primeiro!</p>
         {% endfor %}
     </section>
 {% endblock %}
