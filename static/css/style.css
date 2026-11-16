@@ -1,0 +1,252 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    width: 100%;
+
+    background: linear-gradient(
+        to top,
+        #283A63,
+        #5C9C9A
+    );
+}
+
+header {
+    background-color: #F3E8D0;
+
+    width: 600px;
+    max-width: calc(100% - 20px);
+
+    margin: 20px auto 0;
+    padding: 10px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    box-shadow:
+        0px 2px 0px 2px rgba(0, 0, 0, 0.15);
+}
+
+nav {
+    padding: 10px;
+    width: 100%;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 30px;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    flex-wrap: wrap;
+}
+h1 a{
+    text-decoration: none;
+    color: #20283A;
+}
+ul li a{
+    text-decoration: none;
+    color: #20283A;
+    font-weight: 400;
+    transition: font-weight 0.2s ease;
+}
+
+ul li a:hover{
+    color: #121622;
+    font-weight: 600;
+}
+nav a {
+    text-decoration: none;
+
+    color: #20283A;
+
+    padding: 10px;
+    margin: 10px;
+
+    border-radius: 10px;
+
+    transition: 0.2s;
+}
+
+nav a:hover {
+    background-color: #9B8FC4;
+
+    color: #F4F1E8;
+
+    box-shadow:
+        0px 2px 2px 0px rgba(101, 97, 97, 0.15);
+}
+
+
+.logo {
+    width: 100px;
+    max-width: 100%;
+    height: auto;
+}
+
+
+main {
+    background-color: #F3E8D0;
+
+    width: 600px;
+    max-width: calc(100% - 20px);
+
+    margin: 10px auto;
+
+    padding: 10px 20px;
+
+    border-radius: 10px;
+}
+
+
+main p {
+    text-indent: 10px;
+    text-align: justify;
+
+    /* Impede palavras gigantes de estourarem o layout */
+    overflow-wrap: break-word;
+}
+
+main img {
+    display: block;
+
+    max-width: 100%;
+    height: auto;
+
+    margin: 20px auto;
+}
+
+.botoes1{
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.botoes1 button a{
+    text-decoration: none;
+    color: #F4F1E8;
+}
+
+/* ---------- Lista de posts ---------- */
+main ul {
+    list-style: none;
+    padding: 0;
+}
+
+main ul li {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(32, 40, 58, 0.2);
+}
+
+main a {
+    color: #283A63;
+}
+
+/* ---------- Formulários ---------- */
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #9B8FC4;
+    border-radius: 6px;
+    background: #fff;
+}
+
+/* ---------- Botões ---------- */
+button {
+    display: inline-block;
+    padding: 8px 14px;
+    font-size: 1rem;
+    color: #F4F1E8;
+    background: #283A63;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #9B8FC4;
+}
+
+/*RESPONSIVIDADE*/
+
+@media (max-width: 620px) {
+
+    header {
+        width: calc(100% - 20px);
+        max-width: none;
+
+        padding: 10px;
+    }
+
+    main {
+        width: calc(100% - 20px);
+        max-width: none;
+
+        padding: 10px 15px;
+    }
+
+    nav ul {
+        gap: 10px;
+    }
+
+    nav a {
+        margin: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    header {
+        margin-top: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    nav {
+        padding: 5px;
+    }
+
+    nav ul {
+        gap: 5px;
+    }
+
+    nav a {
+        padding: 8px;
+        margin: 2px;
+    }
+
+    .logo {
+        width: 85px;
+    }
+
+    .foto-1 {
+        width: 160px;
+    }
+}
