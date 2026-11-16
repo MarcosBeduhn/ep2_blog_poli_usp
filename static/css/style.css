@@ -192,6 +192,38 @@ button:hover {
     background: #9B8FC4;
 }
 
+/* ---------- Comentários ---------- */
+.comments {
+    margin-top: 30px;
+}
+
+.comment {
+    padding: 10px 15px;
+    margin-top: 12px;
+    background: rgba(255, 255, 255, 0.55);
+    border-left: 4px solid #9B8FC4;
+    border-radius: 8px;
+}
+
+.comment p {
+    margin: 0 0 6px;
+    text-indent: 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    color: #F4F1E8;
+    background: #283A63;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #9B8FC4;
+}
+
 /*RESPONSIVIDADE*/
 
 @media (max-width: 620px) {

@@ -8,11 +8,26 @@
 
     <div>{{ post.content|safe }}</div>
 
-    <hr>
     <div class="botoes1">
-        <button type="submit"><a href="{% url 'post_update' post.pk %}">Editar</a></button> 
-        <button type="submit"><a href="{% url 'post_delete' post.pk %}">Remover</a></button>
-        <button type="submit"><a href="{% url 'post_list' %}">Voltar</a></button>
+        <a href="{% url 'post_update' post.pk %}">Editar</a>
+        <a href="{% url 'post_delete' post.pk %}">Remover</a>
+        <a href="{% url 'post_list' %}">Voltar</a>
     </div>
-        
+
+    <section class="comments">
+        <h3>Comentários ({{ post.comments.count }})</h3>
+        <a href="{% url 'comment_create' post.pk %}" class="btn">Comentar</a>
+
+        {% for comment in post.comments.all %}
+            <div class="comment">
+                <p>
+                    <strong>{{ comment.author_name }}</strong>
+                    <small>em {{ comment.posted_at|date:"d/m/Y H:i" }}</small>
+                </p>
+                <p>{{ comment.text|linebreaksbr }}</p>
+            </div>
+        {% empty %}
+            <p>Nenhum comentário ainda. Seja o primeiro!</p>
+        {% endfor %}
+    </section>
 {% endblock %}
