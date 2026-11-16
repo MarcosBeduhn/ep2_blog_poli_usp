@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+    <h2>Posts</h2>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
+                <small>({{ post.posted_at|date:"d/m/Y H:i" }})</small>
+            </li>
+        {% empty %}
+            <li>Nenhum post ainda.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
