@@ -1,9 +1,10 @@
-from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.views.generic import (
     ListView, DetailView, CreateView, UpdateView, DeleteView
 )
+from .forms import PostForm, CommentForm
 from .models import Post
-from .forms import PostForm
 
 
 class PostListView(ListView):
@@ -28,3 +29,26 @@ class PostUpdateView(UpdateView):
 class PostDeleteView(DeleteView):
     model = Post
     success_url = reverse_lazy('post_list')
+
+
+class CommentCreateView(CreateView):
+    form_class = CommentForm
+    template_name = 'blog/comment_form.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.post_obj = get_object_or_404(Post, pk=kwargs['pk'])
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        form.instance.post = self.post_obj
+        if self.request.user.is_authenticated:
+            form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['post'] = self.post_obj
+        return context
+
+    def get_success_url(self):
+        return reverse('post_detail', kwargs={'pk': self.post_obj.pk})
